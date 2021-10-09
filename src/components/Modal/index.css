@@ -1,0 +1,33 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: var(--z-modal-overlay);
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-modal);
+
+  width: 80vw;
+  padding: 1.25rem;
+
+  background-color: var(--c-white);
+  border-radius: 4px;
+  box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3),
+    0px 6px 16px rgba(67, 68, 69, 0.3);
+
+  transform: translate(-50%, -50%);
+}
+
+@media (min-width: 481px) {
+  .modal-content {
+    width: auto;
+  }
+}

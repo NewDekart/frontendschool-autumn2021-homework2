@@ -1,0 +1,10 @@
+.outer-layout {
+  max-width: 856px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.layout {
+  height: inherit;
+  margin: 0 1rem;
+}

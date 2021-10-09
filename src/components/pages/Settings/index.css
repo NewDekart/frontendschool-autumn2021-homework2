@@ -1,0 +1,18 @@
+.settings-info {
+  width: 12.5rem;
+}
+
+@media (min-width: 481px) {
+  .settings-info {
+    width: 100%;
+  }
+}
+
+.build-timer {
+  padding: 12px 0;
+  display: flex;
+}
+
+.build-timer > * + * {
+  margin-left: 0.5rem;
+}

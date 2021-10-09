@@ -1,0 +1,12 @@
+.error {
+  display: flex;
+  align-items: center;
+}
+
+.error > * + * {
+  margin-left: 0.5rem;
+}
+
+.error-message {
+  color: var(--c-red-500);
+}

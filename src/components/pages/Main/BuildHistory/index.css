@@ -1,0 +1,8 @@
+.build-history-content {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.build-history-cards > * + * {
+  margin-top: 0.5rem;
+}

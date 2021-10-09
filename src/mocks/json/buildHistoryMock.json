@@ -1,0 +1,35 @@
+[
+  {
+    "id": "7yujhk",
+    "status": "success",
+    "number": "1368",
+    "message": "add documentation for postgres scaler",
+    "branchName": "master",
+    "commitHash": "9c9f0b9",
+    "userInfo": "Philip Kirkorov",
+    "date": 1633800109995,
+    "time": 5400000
+  },
+  {
+    "id": "7yujhk1",
+    "status": "error",
+    "number": "1368",
+    "message": "add documentation for postgres scaler",
+    "branchName": "master",
+    "commitHash": "9c9f0b9",
+    "userInfo": "Philip Kirkorov",
+    "date": 1633800109995,
+    "time": 5400000
+  },
+  {
+    "id": "7yujhk2",
+    "status": "progress",
+    "number": "1368",
+    "message": "add documentation for postgres scaler",
+    "branchName": "master",
+    "commitHash": "9c9f0b9",
+    "userInfo": "Philip Kirkorov",
+    "date": 1633800109995,
+    "time": 5400000
+  }
+]

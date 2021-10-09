@@ -1,0 +1,10 @@
+.run-build-modal > * + * {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+.run-build-header {
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.222;
+}

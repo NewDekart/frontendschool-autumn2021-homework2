@@ -1,0 +1,8 @@
+.a {
+  color: var(--c-blue-grey-500);
+  text-decoration: none;
+}
+
+.a:hover {
+  color: var(--c-a-hover);
+}

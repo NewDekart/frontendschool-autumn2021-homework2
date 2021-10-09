@@ -1,0 +1,27 @@
+.btn-group {
+  display: flex;
+}
+
+.btn-group > * + * {
+  margin-left: 0.5rem;
+}
+
+.btn-group.fluid {
+  display: block;
+}
+
+.btn-group.fluid > * + * {
+  margin-top: 0.75rem;
+  margin-left: 0;
+}
+
+@media (min-width: 481px) {
+  .btn-group.fluid {
+    display: flex;
+  }
+
+  .btn-group.fluid > * + * {
+    margin-top: 0rem;
+    margin-left: 0.5rem;
+  }
+}

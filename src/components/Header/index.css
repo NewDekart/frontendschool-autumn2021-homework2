@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  padding: 0.625rem 0;
+}
+
+@media (min-width: 481px) {
+  .header {
+    align-items: center;
+  }
+}

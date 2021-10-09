@@ -1,0 +1,24 @@
+.h {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+.h1 {
+  font-size: 1.125rem;
+  line-height: 1.222;
+  letter-spacing: 0.25px;
+}
+
+@media (min-width: 481px) {
+  .h1 {
+    font-size: 1.5rem;
+    line-height: 1.167;
+  }
+}
+
+.h2 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  list-style: 1.333;
+}
