@@ -1,4 +1,6 @@
-export const initialState = {
+import { setSettingsFetching, setSettingsError, setSettings } from "../types";
+
+const initialState = {
   isFetching: false,
   repoName: "",
   build: "",
@@ -8,21 +10,21 @@ export const initialState = {
   errorMessage: "",
 };
 
-export function reducer(state, action) {
+function reducer(state = initialState, action) {
   switch (action.type) {
-    case "setFetching": {
+    case setSettingsFetching: {
       return {
         ...state,
         isFetching: action.payload,
       };
     }
-    case "setError": {
+    case setSettingsError: {
       return {
         ...state,
         ...action.payload,
       };
     }
-    case "setSettings": {
+    case setSettings: {
       return {
         ...state,
         ...action.payload,
@@ -33,3 +35,5 @@ export function reducer(state, action) {
       return state;
   }
 }
+
+export default reducer;

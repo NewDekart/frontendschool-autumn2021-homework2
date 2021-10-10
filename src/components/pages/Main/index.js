@@ -1,13 +1,13 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { getRepoName } from "../../../store/selectors/settingsSelectors";
 
 import BuildHistory from "./BuildHistory";
 import StartScreen from "./StartScreen";
-import Context from "../../Context";
 
 const Main = () => {
-  const { state } = useContext(Context);
+  const repoName = useSelector(getRepoName);
 
-  return state.repoName ? <BuildHistory /> : <StartScreen />;
+  return repoName ? <BuildHistory /> : <StartScreen />;
 };
 
 export default Main;

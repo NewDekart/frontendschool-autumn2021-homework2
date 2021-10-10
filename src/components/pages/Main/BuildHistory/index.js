@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import Header from "../../../Header";
 import Heading from "../../../Heading";
@@ -7,19 +8,22 @@ import Button from "../../../Button";
 import ButtonGroup from "../../../ButtonGroup";
 import BuildCard from "./BuildCard";
 import RunBuildModal from "./RunBuildModal";
-import Context from "../../../Context";
 
 import { ReactComponent as SettingsIcon } from "../../../../assets/images/svg/settings.svg";
 import { ReactComponent as RunIcon } from "../../../../assets/images/svg/run.svg";
 
 import "./index.css";
 
-import buildHistoryMock from "../../../../mocks/json/buildHistoryMock.json";
+import { getRepoName } from "../../../../store/selectors/settingsSelectors";
+import { getBuildInfo } from "../../../../store/selectors/buildsSelectors";
+import { getHistoryItems } from "../../../../store/actions/buildsActions";
 
 const BuildHistory = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const { state } = useContext(Context);
+  const repoName = useSelector(getRepoName);
+  const { items, full } = useSelector(getBuildInfo);
 
   const [isNewBuildOpen, setNewBuildOpen] = useState(false);
 
@@ -27,7 +31,7 @@ const BuildHistory = () => {
     <>
       <Header>
         <Heading type="h1" color="c-black">
-          {state.repoName}
+          {repoName}
         </Heading>
         <ButtonGroup>
           <Button type="control" size="sm" onClick={openNewBuildModal}>
@@ -41,14 +45,22 @@ const BuildHistory = () => {
       </Header>
       <div className="build-history-content">
         <div className="build-history-cards">
-          {buildHistoryMock.map((build) => {
+          {items?.map((build) => {
             return <BuildCard {...build} key={build.id} />;
           })}
         </div>
         <div>
-          <Button type="control" size="sm" stretch="fluid" className="mt-8">
-            Show more
-          </Button>
+          {!full && (
+            <Button
+              type="control"
+              size="sm"
+              stretch="fluid"
+              className="mt-8"
+              onClick={showMore}
+            >
+              Show more
+            </Button>
+          )}
         </div>
       </div>
       {isNewBuildOpen && <RunBuildModal onClose={closeNewBuildModal} />}
@@ -65,6 +77,10 @@ const BuildHistory = () => {
 
   function closeNewBuildModal() {
     setNewBuildOpen(false);
+  }
+
+  function showMore() {
+    dispatch(getHistoryItems(true));
   }
 };
 

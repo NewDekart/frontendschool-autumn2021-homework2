@@ -1,6 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useState } from "react";
 import classNames from "classnames";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../Header";
 import Heading from "../../Heading";
@@ -10,33 +11,22 @@ import ButtonGroup from "../../ButtonGroup";
 import Input from "../../Input";
 import InputTime from "../../InputTime";
 import ErrorMessage from "../../ErrorMessage";
-import Context from "../../Context";
+
+import { onSaveSettings } from "../../../store/actions/settingsActions";
+import { getSettings } from "../../../store/selectors/settingsSelectors";
 
 import "./index.css";
 
 const Settings = () => {
   const history = useHistory();
 
-  const { state, dispatch } = useContext(Context);
-
-  const [saveInterval, setSaveInterval] = useState(null);
+  const dispatch = useDispatch();
+  const state = useSelector(getSettings);
 
   const [repoName, setRepoName] = useState(state.repoName);
   const [build, setBuild] = useState(state.build);
   const [branch, setBranch] = useState(state.branch);
   const [period, setPeriod] = useState(state.period);
-
-  useEffect(() => {
-    return () => {
-      clearInterval(saveInterval);
-      if (state.isFetching) {
-        dispatch({
-          type: "setFetching",
-          payload: false,
-        });
-      }
-    };
-  }, [saveInterval, state.isFetching, dispatch]);
 
   return (
     <>
@@ -123,53 +113,17 @@ const Settings = () => {
   }
 
   function onSave() {
-    dispatch({
-      type: "setFetching",
-      payload: true,
-    });
-
-    setSaveInterval(setTimeout(onSaveCallback, 2000));
-  }
-
-  function onSaveCallback() {
-    dispatch({
-      type: "setFetching",
-      payload: false,
-    });
-
-    if (window.imitateSettingsError) {
-      dispatch({
-        type: "setError",
-        payload: {
-          isError: true,
-          errorMessage: "Error occuried. Please, try again.",
+    dispatch(
+      onSaveSettings(
+        {
+          repoName,
+          build,
+          branch,
+          period,
         },
-      });
-
-      return;
-    }
-
-    dispatch({
-      type: "setSettings",
-      payload: {
-        repoName,
-        build,
-        branch,
-        period,
-      },
-    });
-
-    if (state.isError) {
-      dispatch({
-        type: "setError",
-        payload: {
-          isError: false,
-          errorMessage: "",
-        },
-      });
-    }
-
-    goToHome();
+        goToHome
+      )
+    );
   }
 
   function goToHome() {

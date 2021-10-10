@@ -1,21 +1,21 @@
-import { useReducer } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import Layout from "../Layout";
 import Page from "../Page";
 import Main from "../pages/Main";
 import Settings from "../pages/Settings";
-import Context from "../Context";
-import { reducer, initialState } from "../../store/reducerConfiguration";
+
+import configureStore from "../../store/configureStore";
+
+const store = configureStore();
 
 const Pages = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
     <div className="content">
       <Layout>
         <Page>
-          <Context.Provider value={{ state, dispatch }}>
+          <Provider store={store}>
             <BrowserRouter>
               <Switch>
                 <Route exact path="/settings">
@@ -29,7 +29,7 @@ const Pages = () => {
                 </Route>
               </Switch>
             </BrowserRouter>
-          </Context.Provider>
+          </Provider>
         </Page>
       </Layout>
     </div>
