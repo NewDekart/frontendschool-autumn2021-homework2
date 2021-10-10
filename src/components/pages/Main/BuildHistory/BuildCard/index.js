@@ -1,3 +1,4 @@
+import React from "react";
 import classNames from "classnames";
 import format from "date-fns/format";
 import russianLocale from "date-fns/locale/ru";

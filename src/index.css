@@ -1,19 +1,19 @@
 @font-face {
   font-weight: 400;
   font-family: "YS Text";
-  src: url("/src/assets/fonts/text-regular.woff2") format("woff2");
+  src: url(//yastatic.net/s3/home/fonts/ys/1/text-regular.woff2) format("woff2");
 }
 
 @font-face {
   font-weight: 500;
   font-family: "YS Text";
-  src: url("/src/assets/fonts/text-medium.woff2") format("woff2");
+  src: url(//yastatic.net/s3/home/fonts/ys/1/text-medium.woff2) format("woff2");
 }
 
 @font-face {
   font-weight: 700;
   font-family: "YS Text";
-  src: url("/src/assets/fonts/text-bold.woff2") format("woff2");
+  src: url(//yastatic.net/s3/home/fonts/ys/1/text-bold.woff2) format("woff2");
 }
 
 :root {

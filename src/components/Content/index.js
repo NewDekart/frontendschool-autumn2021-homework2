@@ -1,5 +1,5 @@
-import { useReducer } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import React, { useReducer } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Layout from "../Layout";
 import Page from "../Page";
@@ -16,7 +16,6 @@ const Pages = () => {
       <Layout>
         <Page>
           <Context.Provider value={{ state, dispatch }}>
-            <BrowserRouter>
               <Switch>
                 <Route exact path="/settings">
                   <Settings />
@@ -28,7 +27,6 @@ const Pages = () => {
                   <Redirect to="/" />
                 </Route>
               </Switch>
-            </BrowserRouter>
           </Context.Provider>
         </Page>
       </Layout>

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import "./index.css";
 
 const Link = ({ href, children, target = "_self" }) => {

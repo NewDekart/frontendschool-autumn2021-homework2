@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { ReactComponent as ErrorIcon } from "../../assets/images/svg/error.svg";
 
 import "./index.css";
