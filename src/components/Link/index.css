@@ -1,6 +1,8 @@
 .a {
   color: var(--c-blue-grey-500);
   text-decoration: none;
+
+  cursor: pointer;
 }
 
 .a:hover {
