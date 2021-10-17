@@ -1,8 +1,10 @@
-.a {
+.link {
   color: var(--c-blue-grey-500);
   text-decoration: none;
+
+  cursor: pointer;
 }
 
-.a:hover {
+.link:hover {
   color: var(--c-a-hover);
 }

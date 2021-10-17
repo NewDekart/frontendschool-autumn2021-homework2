@@ -21,6 +21,21 @@ const Input = ({
 }) => {
   const inputRef = useRef(null);
 
+  const onChangeWrapper = (e) => {
+    e.preventDefault();
+    if (onChange) {
+      onChange(e.target.value);
+    }
+  }
+
+  const onClear = (e) => {
+    e.preventDefault();
+    if (onChange) {
+      onChange("");
+    }
+    inputRef.current.focus();
+  }
+
   return (
     <div className={classNames("form-input", stretch)}>
       {label && (
@@ -50,21 +65,6 @@ const Input = ({
       {additionalComponent}
     </div>
   );
-
-  function onChangeWrapper(e) {
-    e.preventDefault();
-    if (onChange) {
-      onChange(e.target.value);
-    }
-  }
-
-  function onClear(e) {
-    e.preventDefault();
-    if (onChange) {
-      onChange("");
-    }
-    inputRef.current.focus();
-  }
 };
 
 export default Input;

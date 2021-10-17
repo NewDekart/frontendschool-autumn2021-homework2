@@ -3,8 +3,8 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import Layout from "../Layout";
 import Page from "../Page";
-import Main from "../pages/Main";
-import Settings from "../pages/Settings";
+import Main from "../../pages/Main";
+import Settings from "../../pages/Settings";
 import Context from "../Context";
 import { reducer, initialState } from "../../store/reducerConfiguration";
 

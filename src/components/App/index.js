@@ -1,18 +1,20 @@
 import Footer from "../Footer";
 import Link from "../Link";
 import Content from "../Content";
+import FooterItem from "../FooterItem";
 
 import "./index.css";
 
-function App() {
+const App = () => {
+
   return (
     <div className="app">
       <Content />
       <Footer>
-        <Link href="#">Support</Link>
-        <Link href="#">Learning</Link>
-        <Link href="#">Русская версия</Link>
-        <span className="footer-right">&copy; 2021 Amal Dusalin</span>
+        <FooterItem><Link>Support</Link></FooterItem>
+        <FooterItem><Link>Learning</Link></FooterItem>
+        <FooterItem><Link>Русская версия</Link></FooterItem>
+        <FooterItem right><span>&copy; 2021 Amal Dusalin</span></FooterItem>
       </Footer>
     </div>
   );

@@ -1,20 +1,20 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import Header from "../../../Header";
-import Heading from "../../../Heading";
-import Button from "../../../Button";
-import ButtonGroup from "../../../ButtonGroup";
+import Header from "../../../components/Header";
+import Heading from "../../../components/Heading";
+import Button from "../../../components//Button";
+import ButtonGroup from "../../../components//ButtonGroup";
 import BuildCard from "./BuildCard";
 import RunBuildModal from "./RunBuildModal";
-import Context from "../../../Context";
+import Context from "../../../components/Context";
 
-import { ReactComponent as SettingsIcon } from "../../../../assets/images/svg/settings.svg";
-import { ReactComponent as RunIcon } from "../../../../assets/images/svg/run.svg";
+import { ReactComponent as SettingsIcon } from "../../../assets/images/svg/settings.svg";
+import { ReactComponent as RunIcon } from "../../../assets/images/svg/run.svg";
 
 import "./index.css";
 
-import buildHistoryMock from "../../../../mocks/json/buildHistoryMock.json";
+import buildHistoryMock from "../../../mocks/json/buildHistoryMock.json";
 
 const BuildHistory = () => {
   const history = useHistory();
@@ -23,10 +23,22 @@ const BuildHistory = () => {
 
   const [isNewBuildOpen, setNewBuildOpen] = useState(false);
 
+  const goToSettings = () => {
+    history.push("/settings");
+  }
+
+  const openNewBuildModal = () => {
+    setNewBuildOpen(true);
+  }
+
+  const closeNewBuildModal = () => {
+    setNewBuildOpen(false);
+  }
+
   return (
     <>
       <Header>
-        <Heading type="h1" color="c-black">
+        <Heading type="heading1" color="c-black">
           {state.repoName}
         </Heading>
         <ButtonGroup>
@@ -54,18 +66,6 @@ const BuildHistory = () => {
       {isNewBuildOpen && <RunBuildModal onClose={closeNewBuildModal} />}
     </>
   );
-
-  function goToSettings() {
-    history.push("/settings");
-  }
-
-  function openNewBuildModal() {
-    setNewBuildOpen(true);
-  }
-
-  function closeNewBuildModal() {
-    setNewBuildOpen(false);
-  }
 };
 
 export default BuildHistory;

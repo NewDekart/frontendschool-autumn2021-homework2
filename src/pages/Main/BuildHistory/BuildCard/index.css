@@ -1,0 +1,8 @@
+.build-card-elem {
+  display: flex;
+  align-items: center;
+}
+
+.build-card-elem > * + * {
+  margin-left: 0.375rem;
+}

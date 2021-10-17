@@ -11,12 +11,6 @@
   }
 }
 
-.footer > * {
-  color: var(--c-blue-grey-500);
-
-  line-height: 1.385;
-}
-
 .footer .layout {
   display: flex;
   flex-wrap: wrap;

@@ -1,22 +1,26 @@
 import { useHistory } from "react-router-dom";
 
-import Header from "../../../Header";
-import Heading from "../../../Heading";
-import Button from "../../../Button";
+import Header from "../../../components/Header";
+import Heading from "../../../components/Heading";
+import Button from "../../../components/Button";
 import classNames from "classnames";
 
-import { ReactComponent as SettingsIcon } from "../../../../assets/images/svg/settings.svg";
-import { ReactComponent as ConfigurationImage } from "../../../../assets/images/svg/configuration.svg";
+import { ReactComponent as SettingsIcon } from "../../../assets/images/svg/settings.svg";
+import { ReactComponent as ConfigurationImage } from "../../../assets/images/svg/configuration.svg";
 
 import "./index.css";
 
 const StartScreen = () => {
   const history = useHistory();
 
+  const  goToSettings = () => {
+    history.push("/settings");
+  }
+
   return (
     <>
       <Header>
-        <Heading type="h1" color="c-blue-grey">
+        <Heading type="heading1" color="c-blue-grey">
           School CI server
         </Heading>
         <Button type="control" size="sm" onClick={goToSettings}>
@@ -44,10 +48,6 @@ const StartScreen = () => {
       </div>
     </>
   );
-
-  function goToSettings() {
-    history.push("/settings");
-  }
 };
 
 export default StartScreen;
