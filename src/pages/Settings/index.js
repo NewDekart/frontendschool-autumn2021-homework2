@@ -38,91 +38,14 @@ const Settings = () => {
     };
   }, [saveInterval, state.isFetching, dispatch]);
 
-  return (
-    <>
-      <Header>
-        <Heading type="heading1" color="c-blue-grey">
-          School CI server
-        </Heading>
-      </Header>
-      <div>
-        <Heading type="heading2">Settings</Heading>
-        <p className={classNames("settings-info", "c-blue-grey", "mt-8")}>
-          Configure repository connection and synchronization settings.
-        </p>
-        <Form buttons={getButtons()}>
-          <Input
-            id="repoName"
-            label="GitHub repository"
-            required
-            placeholder="user-name/repo-name"
-            value={repoName}
-            onChange={setRepoName}
-          />
-          <Input
-            id="build"
-            label="Build command"
-            required
-            value={build}
-            onChange={setBuild}
-          />
-          <Input
-            id="branch"
-            label="Main branch"
-            value={branch}
-            onChange={setBranch}
-          />
-          <div className="build-timer">
-            <InputTime
-              id="period"
-              label="Synchronize every"
-              width="3.625rem"
-              textAlign="end"
-              stretch="fluid"
-              additionalComponent={
-                <span className="c-blue-grey-600">minutes</span>
-              }
-              length={3}
-              value={period}
-              onChange={setPeriod}
-              clear={false}
-            />
-          </div>
-          {state.isError && <ErrorMessage>{state.errorMessage}</ErrorMessage>}
-        </Form>
-      </div>
-    </>
-  );
+  const isCancelDisabled = state.isFetching;
+  const isSaveDisabled = isCancelDisabled || !repoName || !build;
 
-  function getButtons() {
-    const isCancelDisabled = state.isFetching;
-    const isSaveDisabled = isCancelDisabled || !repoName || !build;
-
-    return (
-      <ButtonGroup stretch="fluid">
-        <Button
-          size="md"
-          type="action"
-          onClick={onSave}
-          stretch="fluid"
-          disabled={isSaveDisabled}
-        >
-          Save
-        </Button>
-        <Button
-          size="md"
-          type="control"
-          onClick={goToHome}
-          stretch="fluid"
-          disabled={isCancelDisabled}
-        >
-          Cancel
-        </Button>
-      </ButtonGroup>
-    );
+  const goToHome = () => {
+    history.push("/");
   }
 
-  function onSave() {
+  const onSave = () => {
     dispatch({
       type: "setFetching",
       payload: true,
@@ -131,7 +54,7 @@ const Settings = () => {
     setSaveInterval(setTimeout(onSaveCallback, 2000));
   }
 
-  function onSaveCallback() {
+  const onSaveCallback = () => {
     dispatch({
       type: "setFetching",
       payload: false,
@@ -172,9 +95,85 @@ const Settings = () => {
     goToHome();
   }
 
-  function goToHome() {
-    history.push("/");
-  }
+  return (
+    <>
+      <Header>
+        <Heading type="heading1" color="c-blue-grey">
+          School CI server
+        </Heading>
+      </Header>
+      <div>
+        <Heading type="heading2">Settings</Heading>
+        <p className={classNames("settings-info", "c-blue-grey", "mt-8")}>
+          Configure repository connection and synchronization settings.
+        </p>
+        <Form>
+          <Form.Body>
+            <Input
+              id="repoName"
+              label="GitHub repository"
+              required
+              placeholder="user-name/repo-name"
+              value={repoName}
+              onChange={setRepoName}
+            />
+            <Input
+              id="build"
+              label="Build command"
+              required
+              value={build}
+              onChange={setBuild}
+            />
+            <Input
+              id="branch"
+              label="Main branch"
+              value={branch}
+              onChange={setBranch}
+            />
+            <div className="build-timer">
+              <InputTime
+                id="period"
+                label="Synchronize every"
+                width="3.625rem"
+                textAlign="end"
+                stretch="fluid"
+                additionalComponent={
+                  <span className="c-blue-grey-600">minutes</span>
+                }
+                length={3}
+                value={period}
+                onChange={setPeriod}
+                clear={false}
+              />
+            </div>
+            {state.isError && <ErrorMessage>{state.errorMessage}</ErrorMessage>}
+          </Form.Body>
+          <Form.Buttons>
+            <ButtonGroup stretch="fluid">
+              <Button
+                size="md"
+                type="action"
+                onClick={onSave}
+                stretch="fluid"
+                disabled={isSaveDisabled}
+              >
+                Save
+              </Button>
+              <Button
+                size="md"
+                type="control"
+                onClick={goToHome}
+                stretch="fluid"
+                disabled={isCancelDisabled}
+              >
+                Cancel
+              </Button>
+            </ButtonGroup>
+          </Form.Buttons>
+        </Form>
+      </div>
+    </>
+  );
 };
 
 export default Settings;

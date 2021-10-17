@@ -1,0 +1,29 @@
+.c-success {
+    color: var(--c-green);
+  }
+
+  .c-progress {
+    color: var(--c-orange-500);
+  }
+
+  .c-error {
+    color: var(--c-red-500);
+  }
+
+  .build-message {
+    font-size: 0.9375rem;
+    line-height: 1.333;
+}
+
+.build-number {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  @media (min-width: 481px) {
+    .build-number {
+      font-size: 1.125rem;
+      line-height: 1.111;
+    }
+  }

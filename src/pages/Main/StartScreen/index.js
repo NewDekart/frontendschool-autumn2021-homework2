@@ -13,6 +13,10 @@ import "./index.css";
 const StartScreen = () => {
   const history = useHistory();
 
+  const  goToSettings = () => {
+    history.push("/settings");
+  }
+
   return (
     <>
       <Header>
@@ -44,10 +48,6 @@ const StartScreen = () => {
       </div>
     </>
   );
-
-  function goToSettings() {
-    history.push("/settings");
-  }
 };
 
 export default StartScreen;

@@ -2,13 +2,27 @@ import classNames from "classnames";
 
 import "./index.css";
 
-const Form = ({ children, buttons, margin }) => {
+const Form = ({ margin, children }) => {
   return (
     <form className={classNames("form", margin)}>
-      <div className="form-body">{children}</div>
-      <div className="form-buttons">{buttons}</div>
+      {children}
     </form>
   );
 };
+
+const Body = ({ children }) => {
+  return (
+    <div className="form-body">{children}</div>
+  )
+}
+
+const Buttons = ({ children }) => {
+  return (
+    <div className="form-buttons">{children}</div>
+  )
+}
+
+Form.Body = Body
+Form.Buttons = Buttons
 
 export default Form;

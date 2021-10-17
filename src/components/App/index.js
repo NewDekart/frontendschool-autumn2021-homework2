@@ -5,7 +5,7 @@ import FooterItem from "../FooterItem";
 
 import "./index.css";
 
-function App() {
+const App = () => {
 
   return (
     <div className="app">

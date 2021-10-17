@@ -23,6 +23,18 @@ const BuildHistory = () => {
 
   const [isNewBuildOpen, setNewBuildOpen] = useState(false);
 
+  const goToSettings = () => {
+    history.push("/settings");
+  }
+
+  const openNewBuildModal = () => {
+    setNewBuildOpen(true);
+  }
+
+  const closeNewBuildModal = () => {
+    setNewBuildOpen(false);
+  }
+
   return (
     <>
       <Header>
@@ -54,18 +66,6 @@ const BuildHistory = () => {
       {isNewBuildOpen && <RunBuildModal onClose={closeNewBuildModal} />}
     </>
   );
-
-  function goToSettings() {
-    history.push("/settings");
-  }
-
-  function openNewBuildModal() {
-    setNewBuildOpen(true);
-  }
-
-  function closeNewBuildModal() {
-    setNewBuildOpen(false);
-  }
 };
 
 export default BuildHistory;
