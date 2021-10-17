@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import "./index.css";
 
-const Link = ({ href, children, target = "_self", className = "" }) => {
+const Link = ({ href, children, target, className = "" }) => {
   return (
     <a href={href} target={target} className={classNames("a", className)}>
       {children}
