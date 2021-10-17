@@ -4,7 +4,7 @@ import "./index.css";
 
 const Link = ({ href, children, target, className = "" }) => {
   return (
-    <a href={href} target={target} className={classNames("a", className)}>
+    <a href={href} target={target} className={classNames("link", className)}>
       {children}
     </a>
   );

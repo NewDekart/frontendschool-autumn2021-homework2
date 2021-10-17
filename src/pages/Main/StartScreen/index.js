@@ -16,7 +16,7 @@ const StartScreen = () => {
   return (
     <>
       <Header>
-        <Heading type="h1" color="c-blue-grey">
+        <Heading type="heading1" color="c-blue-grey">
           School CI server
         </Heading>
         <Button type="control" size="sm" onClick={goToSettings}>

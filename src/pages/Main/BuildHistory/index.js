@@ -26,7 +26,7 @@ const BuildHistory = () => {
   return (
     <>
       <Header>
-        <Heading type="h1" color="c-black">
+        <Heading type="heading1" color="c-black">
           {state.repoName}
         </Heading>
         <ButtonGroup>

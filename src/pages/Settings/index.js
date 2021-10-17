@@ -41,12 +41,12 @@ const Settings = () => {
   return (
     <>
       <Header>
-        <Heading type="h1" color="c-blue-grey">
+        <Heading type="heading1" color="c-blue-grey">
           School CI server
         </Heading>
       </Header>
       <div>
-        <Heading type="h2">Settings</Heading>
+        <Heading type="heading2">Settings</Heading>
         <p className={classNames("settings-info", "c-blue-grey", "mt-8")}>
           Configure repository connection and synchronization settings.
         </p>
