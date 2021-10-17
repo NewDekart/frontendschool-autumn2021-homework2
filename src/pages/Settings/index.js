@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import classNames from "classnames";
 import { useHistory } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const Settings = () => {
 
   const { state, dispatch } = useContext(Context);
 
-  const [saveInterval, setSaveInterval] = useState(null);
+  const currentInterval = useRef(null);
 
   const [repoName, setRepoName] = useState(state.repoName);
   const [build, setBuild] = useState(state.build);
@@ -28,7 +28,7 @@ const Settings = () => {
 
   useEffect(() => {
     return () => {
-      clearInterval(saveInterval);
+      clearInterval(currentInterval.current);
       if (state.isFetching) {
         dispatch({
           type: "setFetching",
@@ -36,7 +36,7 @@ const Settings = () => {
         });
       }
     };
-  }, [saveInterval, state.isFetching, dispatch]);
+  }, [state.isFetching, dispatch]);
 
   const isCancelDisabled = state.isFetching;
   const isSaveDisabled = isCancelDisabled || !repoName || !build;
@@ -51,7 +51,7 @@ const Settings = () => {
       payload: true,
     });
 
-    setSaveInterval(setTimeout(onSaveCallback, 2000));
+    currentInterval.current = setTimeout(onSaveCallback, 2000);
   }
 
   const onSaveCallback = () => {
