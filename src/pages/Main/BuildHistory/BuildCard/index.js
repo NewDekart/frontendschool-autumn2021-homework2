@@ -4,15 +4,15 @@ import russianLocale from "date-fns/locale/ru";
 import intervalToDuration from "date-fns/intervalToDuration";
 import formatDuration from "date-fns/formatDuration";
 
-import Card from "../../../../Card";
+import Card from "../../../../components/Card";
 
-import { ReactComponent as ErrorIcon } from "../../../../../assets/images/svg/error.svg";
-import { ReactComponent as SuccessIcon } from "../../../../../assets/images/svg/success.svg";
-import { ReactComponent as ProgressIcon } from "../../../../../assets/images/svg/progress.svg";
-import { ReactComponent as BranchIcon } from "../../../../../assets/images/svg/branch.svg";
-import { ReactComponent as UserIcon } from "../../../../../assets/images/svg/user.svg";
-import { ReactComponent as DateIcon } from "../../../../../assets/images/svg/date.svg";
-import { ReactComponent as TimeIcon } from "../../../../../assets/images/svg/time.svg";
+import { ReactComponent as ErrorIcon } from "../../../../assets/images/svg/error.svg";
+import { ReactComponent as SuccessIcon } from "../../../../assets/images/svg/success.svg";
+import { ReactComponent as ProgressIcon } from "../../../../assets/images/svg/progress.svg";
+import { ReactComponent as BranchIcon } from "../../../../assets/images/svg/branch.svg";
+import { ReactComponent as UserIcon } from "../../../../assets/images/svg/user.svg";
+import { ReactComponent as DateIcon } from "../../../../assets/images/svg/date.svg";
+import { ReactComponent as TimeIcon } from "../../../../assets/images/svg/time.svg";
 
 import "./index.css";
 

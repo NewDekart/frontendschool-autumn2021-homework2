@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import Input from "../../../../Input";
-import Modal from "../../../../Modal";
-import Button from "../../../../Button";
-import ButtonGroup from "../../../../ButtonGroup";
-import Form from "../../../../Form";
+import Input from "../../../../components/Input";
+import Modal from "../../../../components/Modal";
+import Button from "../../../../components/Button";
+import ButtonGroup from "../../../../components/ButtonGroup";
+import Form from "../../../../components/Form";
 
 import "./index.css";
 

@@ -2,15 +2,15 @@ import { useState, useContext, useEffect } from "react";
 import classNames from "classnames";
 import { useHistory } from "react-router-dom";
 
-import Header from "../../Header";
-import Heading from "../../Heading";
-import Form from "../../Form";
-import Button from "../../Button";
-import ButtonGroup from "../../ButtonGroup";
-import Input from "../../Input";
-import InputTime from "../../InputTime";
-import ErrorMessage from "../../ErrorMessage";
-import Context from "../../Context";
+import Header from "../../components/Header";
+import Heading from "../../components/Heading";
+import Form from "../../components/Form";
+import Button from "../../components/Button";
+import ButtonGroup from "../../components/ButtonGroup";
+import Input from "../../components/Input";
+import InputTime from "../../components/InputTime";
+import ErrorMessage from "../../components/ErrorMessage";
+import Context from "../../components/Context";
 
 import "./index.css";
 
