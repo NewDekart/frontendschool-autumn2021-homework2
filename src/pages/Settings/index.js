@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useEffect, useRef, useCallback } from "react";
 import classNames from "classnames";
 import { useHistory } from "react-router-dom";
 
@@ -26,35 +26,21 @@ const Settings = () => {
   const [branch, setBranch] = useState(state.branch);
   const [period, setPeriod] = useState(state.period);
 
-  useEffect(() => {
-    return () => {
-      clearInterval(currentInterval.current);
-      if (state.isFetching) {
-        dispatch({
-          type: "setFetching",
-          payload: false,
-        });
-      }
-    };
-  }, [state.isFetching, dispatch]);
+  const isFetching = state.isFetching
+  const isSaveDisabled = isFetching || !repoName || !build;
 
-  const isCancelDisabled = state.isFetching;
-  const isSaveDisabled = isCancelDisabled || !repoName || !build;
-
-  const goToHome = () => {
+  const goToHome = useCallback(() => {
     history.push("/");
-  }
+  }, [history])
 
   const onSave = () => {
     dispatch({
       type: "setFetching",
       payload: true,
     });
-
-    currentInterval.current = setTimeout(onSaveCallback, 2000);
   }
 
-  const onSaveCallback = () => {
+  const onSaveCallback = useCallback(() => {
     dispatch({
       type: "setFetching",
       payload: false,
@@ -93,7 +79,25 @@ const Settings = () => {
     }
 
     goToHome();
-  }
+  }, [branch, dispatch, build, goToHome, period, repoName, state.isError])
+
+  useEffect(() => {
+    return () => {
+      clearInterval(currentInterval.current);
+      if (state.isFetching) {
+        dispatch({
+          type: "setFetching",
+          payload: false,
+        });
+      }
+    };
+  }, [state.isFetching, dispatch]);
+
+  useEffect(() => {
+    if (isFetching) {
+      currentInterval.current = setTimeout(onSaveCallback, 2000);
+    }
+  }, [isFetching, onSaveCallback])
 
   return (
     <>
@@ -164,7 +168,7 @@ const Settings = () => {
                 type="control"
                 onClick={goToHome}
                 stretch="fluid"
-                disabled={isCancelDisabled}
+                disabled={isFetching}
               >
                 Cancel
               </Button>
