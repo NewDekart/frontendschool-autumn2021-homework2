@@ -28,6 +28,10 @@
   background-color: var(--c-bg-action-hover);
 }
 
+.btn-action:focus {
+  border-color: var(--c-active-focus-border);
+}
+
 .btn-control {
   background-color: var(--c-bg-control);
 }
