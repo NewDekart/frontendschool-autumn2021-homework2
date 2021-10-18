@@ -10,6 +10,7 @@ import ErrorMessage from "../../../components/ErrorMessage";
 import Context from "../../../components/Context";
 
 import "./index.css"
+import Loader from "../../../components/Loader";
 
 export const SettingsForm = () => {
 
@@ -99,69 +100,71 @@ export const SettingsForm = () => {
 
 
     return (
-        <Form>
-            <Form.Body>
-                <Input
-                    id="repoName"
-                    label="GitHub repository"
-                    required
-                    placeholder="user-name/repo-name"
-                    value={repoName}
-                    onChange={setRepoName}
-                />
-                <Input
-                    id="build"
-                    label="Build command"
-                    required
-                    value={build}
-                    onChange={setBuild}
-                />
-                <Input
-                    id="branch"
-                    label="Main branch"
-                    value={branch}
-                    onChange={setBranch}
-                />
-                <div className="build-timer">
-                    <InputTime
-                        id="period"
-                        label="Synchronize every"
-                        width="3.625rem"
-                        textAlign="end"
-                        stretch="fluid"
-                        additionalComponent={
-                            <span className="c-blue-grey-600">minutes</span>
-                        }
-                        length={3}
-                        value={period}
-                        onChange={setPeriod}
-                        clear={false}
+        <Loader isLoading={isFetching}>
+            <Form>
+                <Form.Body>
+                    <Input
+                        id="repoName"
+                        label="GitHub repository"
+                        required
+                        placeholder="user-name/repo-name"
+                        value={repoName}
+                        onChange={setRepoName}
                     />
-                </div>
-                {state.isError && <ErrorMessage>{state.errorMessage}</ErrorMessage>}
-            </Form.Body>
-            <Form.Buttons>
-                <ButtonGroup stretch="fluid">
-                    <Button
-                        size="md"
-                        type="action"
-                        onClick={onSave}
-                        stretch="fluid"
-                        disabled={isSaveDisabled}
-                    >
-                        Save
-                    </Button>
-                    <Button
-                        size="md"
-                        type="control"
-                        onClick={goToHome}
-                        stretch="fluid"
-                        disabled={isFetching}
-                    >
-                        Cancel
-                    </Button>
-                </ButtonGroup>
-            </Form.Buttons>
-        </Form>
+                    <Input
+                        id="build"
+                        label="Build command"
+                        required
+                        value={build}
+                        onChange={setBuild}
+                    />
+                    <Input
+                        id="branch"
+                        label="Main branch"
+                        value={branch}
+                        onChange={setBranch}
+                    />
+                    <div className="build-timer">
+                        <InputTime
+                            id="period"
+                            label="Synchronize every"
+                            width="3.625rem"
+                            textAlign="end"
+                            stretch="fluid"
+                            additionalComponent={
+                                <span className="c-blue-grey-600">minutes</span>
+                            }
+                            length={3}
+                            value={period}
+                            onChange={setPeriod}
+                            clear={false}
+                        />
+                    </div>
+                    {state.isError && <ErrorMessage>{state.errorMessage}</ErrorMessage>}
+                </Form.Body>
+                <Form.Buttons>
+                    <ButtonGroup stretch="fluid">
+                        <Button
+                            size="md"
+                            type="action"
+                            onClick={onSave}
+                            stretch="fluid"
+                            disabled={isSaveDisabled}
+                        >
+                            Save
+                        </Button>
+                        <Button
+                            size="md"
+                            type="control"
+                            onClick={goToHome}
+                            stretch="fluid"
+                            disabled={isFetching}
+                        >
+                            Cancel
+                        </Button>
+                    </ButtonGroup>
+                </Form.Buttons>
+            </Form>
+        </Loader>
     )
 }

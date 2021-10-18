@@ -46,6 +46,7 @@
   /*z-indexes*/
   --z-modal-overlay: 500;
   --z-modal: 100;
+  --z-loading: 1000;
 }
 
 :root * {
