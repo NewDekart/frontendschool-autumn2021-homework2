@@ -38,7 +38,7 @@ const BuildHistory = () => {
   return (
     <>
       <Header>
-        <Heading type="heading1" color="c-black">
+        <Heading type="heading1" color="c-black" className="break-word">
           {state.repoName}
         </Heading>
         <ButtonGroup>
