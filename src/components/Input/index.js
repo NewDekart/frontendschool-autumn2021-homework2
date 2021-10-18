@@ -22,6 +22,8 @@ const Input = ({
 }) => {
   const inputRef = useRef(null);
 
+  const inputWithClearClassName = clear && "input-clear"
+
   const onChangeWrapper = (e) => {
     e.preventDefault();
     if (onChange) {
@@ -57,7 +59,7 @@ const Input = ({
         disabled={disabled}
       >
         <input
-          className={classNames("input", textAlign)}
+          className={classNames("input", textAlign, inputWithClearClassName)}
           id={id}
           placeholder={placeholder}
           onChange={onChangeWrapper}
