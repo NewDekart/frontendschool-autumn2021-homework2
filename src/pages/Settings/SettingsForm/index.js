@@ -110,6 +110,7 @@ export const SettingsForm = () => {
                         placeholder="user-name/repo-name"
                         value={repoName}
                         onChange={setRepoName}
+                        autofocus
                     />
                     <Input
                         id="build"

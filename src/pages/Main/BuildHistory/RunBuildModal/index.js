@@ -23,6 +23,7 @@ const RunBuildModal = ({ onClose }) => {
               onChange={setCommit}
               placeholder="Commit hash"
               label="Enter the commit hash which you want to build."
+              autofocus
             />
           </Form.Body>
           <Form.Buttons>

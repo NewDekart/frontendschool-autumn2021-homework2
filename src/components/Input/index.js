@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 import { ReactComponent as ClearIcon } from "../../assets/images/svg/clear.svg";
 
@@ -18,6 +18,7 @@ const Input = ({
   textAlign = "",
   stretch = "",
   additionalComponent = null,
+  autofocus = false
 }) => {
   const inputRef = useRef(null);
 
@@ -35,6 +36,12 @@ const Input = ({
     }
     inputRef.current.focus();
   }
+
+  useEffect(() => {
+    if (inputRef.current && autofocus) {
+      inputRef.current.focus()
+    }
+  }, [inputRef, autofocus])
 
   return (
     <div className={classNames("form-input", stretch)}>
